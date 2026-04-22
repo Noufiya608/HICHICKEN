@@ -14,7 +14,12 @@ export default function Contact() {
     email: "",
     message: ""
   });
-
+const handleChange = (e) => {
+  setForm({
+    ...form,
+    [e.target.name]: e.target.value
+  });
+};
   const submit = async (e) => {
   e.preventDefault();
 
