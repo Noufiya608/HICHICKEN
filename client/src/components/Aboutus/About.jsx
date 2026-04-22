@@ -58,9 +58,9 @@ export default function About() {
         <div className="notice-box">
           <h3>Important Notice</h3>
           <p>
-            We strictly follow hygienic practices in cleaning, cutting, and
-            packing chicken. Orders once placed cannot be canceled after
-            processing. Delivery time may vary based on location and demand.
+            ഞങ്ങൾ ചിക്കൻ ശുചീകരണം, മുറിക്കൽ, പാക്കിംഗ് എന്നിവയിൽ കർശനമായ ശുചിത്വ മാനദണ്ഡങ്ങൾ പാലിക്കുന്നു.
+ഓർഡർ പ്രോസസ്സ് ചെയ്തതിന് ശേഷം അത് റദ്ദാക്കാൻ സാധിക്കില്ല.
+ഡെലിവറി സമയം സ്ഥലവും ആവശ്യകതയും ആശ്രയിച്ച് വ്യത്യാസപ്പെട്ടേക്കാം.
           </p>
         </div>
 
