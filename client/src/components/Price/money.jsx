@@ -47,7 +47,8 @@ const Money = () => {
         <div className="overlay"></div>
 
         <div className="hero-content">
-          <h1>Fresh & Clean Chicken</h1>
+          <h1>Fresh & Clean Chicken </h1>
+         
           <p>Delivered hygienically to your doorstep</p>
            <button onClick={handleClick}>Order Now</button>
         </div>
@@ -68,24 +69,28 @@ const Money = () => {
             <img src="/069c151bbee45f1c50a6acf6f90f28f6.webp" alt="" />
             <h4>Tenderloin</h4>
             <p>₹{price}</p>
+            <button>order now</button>
           </div>
 
           <div className="card">
             <img src="/wholechicken.jpg" alt="" />
             <h4>Whole Chicken</h4>
             <p>₹{price}</p>
+            <button>order now</button>
           </div>
 
           <div className="card">
             <img src="/cut.jpg" alt="" />
             <h4>Cut Pieces</h4>
             <p>₹{price}</p>
+            <button>order now</button>
           </div>
 
           <div className="card">
             <img src="/boneless.jpg" alt="" />
             <h4>Boneless</h4>
             <p>₹{price}</p>
+            <button>order now</button>
           </div>
         </div>
       </section>

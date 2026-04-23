@@ -10,6 +10,7 @@ import orderRoutes from "./ROUTES/orderRoutes.js"
 import payRoutes from "./ROUTES/payRoutes.js"
 import authRoutes from "./ROUTES/authRoutes.js"
 import contactRoutes from "./ROUTES/contactRoutes.js"
+import productRoutes from "./ROUTES/productRoutes.js"
 
  
 
@@ -21,6 +22,9 @@ import contactRoutes from "./ROUTES/contactRoutes.js"
 app.use("/api/payment",payRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/contact", contactRoutes);
+app.use("/uploads", express.static("uploads"));
+
+app.use("/api/products", productRoutes);
 
 
  mongoose.connect(process.env.MONGO_URI).then(()=>{
