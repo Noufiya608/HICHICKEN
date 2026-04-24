@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./Auth.css";
+import "./auth.css";
 
 export default function Signup() {
   const [form, setForm] = useState({
