@@ -24,7 +24,7 @@ const handleChange = (e) => {
   e.preventDefault();
 
   try {
-    await axios.post("https://hichicken1.onrender.com/api/contact", form);
+    await axios.post("https://www.hichicken.in/api/contact", form);
 
     alert("✅ Message sent successfully!");
     setForm({ name: "", email: "", message: "" });

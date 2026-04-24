@@ -20,7 +20,7 @@ const Money = () => {
   useEffect(() => {
     const fetchPrice = async () => {
       try {
-        const res = await axios.get("https://hichicken1.onrender.com/api/price/today");
+        const res = await axios.get("https://www.hichicken.in/api/price/today");
         setPrice(res.data?.pricePerKg || 0);
       } catch (err) {
         console.error(err);
@@ -33,7 +33,7 @@ const Money = () => {
   // 🔥 Products
   useEffect(() => {
     axios
-      .get("https://hichicken1.onrender.com/api/products")
+      .get("https://www.hichicken.in/api/products")
       .then((res) => setProducts(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -114,7 +114,7 @@ const trend = getTrend();
           {products.map((item) => (
             <div className="card" key={item._id}>
               <img
-                src={`https://hichicken1.onrender.com/uploads/${item.image}`}
+                src={`https://www.hichicken.in/uploads/${item.image}`}
                 alt={item.name}
               />
               <h4>{item.name}</h4>

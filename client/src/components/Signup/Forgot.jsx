@@ -13,7 +13,7 @@ export default function Forgot() {
   // 🔹 Send OTP
   const sendOtp = async () => {
     try {
-      await axios.post("https://hichicken1.onrender.com/api/auth/send-otp", { email });
+      await axios.post("https://www.hichicken.in/api/auth/send-otp", { email });
       alert("📩 OTP sent to your email");
       setStep(2);
     } catch (err) {
@@ -24,7 +24,7 @@ export default function Forgot() {
   // 🔹 Reset Password
   const resetPassword = async () => {
     try {
-      await axios.post("https://hichicken1.onrender.com/api/auth/reset-password", {
+      await axios.post("https://www.hichicken.in/api/auth/reset-password", {
         email,
         otp,
         newPassword

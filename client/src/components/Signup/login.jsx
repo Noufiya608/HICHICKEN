@@ -22,7 +22,7 @@ const [showPassword, setShowPassword] = useState("")
 
     try {
       const res = await axios.post(
-        "https://hichicken1.onrender.com/api/auth/login",
+        "https://www.hichicken.in/api/auth/login",
         form
       );
 
