@@ -24,7 +24,7 @@ const Payment = () => {
 
       // 1️⃣ Create order from backend
       const { data } = await axios.post(
-        "http://localhost:5000/api/payment/create",
+        "https://hichicken1.onrender.com/api/payment/create",
         {
           amount: Number(order.total) // ✅ FIXED
         }
