@@ -21,6 +21,9 @@ app.use(cors({
 app.use(express.json());
 
 // Routes
+app.get("/", (req, res) => {
+  res.send("Backend is running successfully 🚀");
+});
 app.use("/api/price", priceRoutes);
 app.use("/api/order", orderRoutes);
 app.use("/api/payment", payRoutes);
