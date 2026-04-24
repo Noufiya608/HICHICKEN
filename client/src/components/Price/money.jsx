@@ -20,7 +20,7 @@ const Money = () => {
   useEffect(() => {
     const fetchPrice = async () => {
       try {
-        const res = await axios.get("https://www.hichicken.in/api/price/today");
+        const res = await axios.get("https://hichicken1.onrender.com/api/price/today");
         setPrice(res.data?.pricePerKg || 0);
       } catch (err) {
         console.error(err);
