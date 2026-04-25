@@ -1,3 +1,11 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+
 *{
   font-family: 'Times New Roman', Times, serif;
 }
@@ -375,5 +383,151 @@
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+  }
+}
+/* =========================
+   GLOBAL RESPONSIVE FIXES
+========================= */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 5%;
+    text-align: center;
+  }
+
+  .navbar nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .navbar nav a {
+    margin: 5px;
+  }
+}
+
+/* =========================
+   HERO
+========================= */
+@media (max-width: 1024px) {
+  .hero-content h1 {
+    font-size: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 60vh;
+  }
+
+  .hero-content h1 {
+    font-size: 45px;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 32px;
+  }
+}
+
+/* =========================
+   PRICE SECTION
+========================= */
+@media (max-width: 768px) {
+  .price-section {
+    flex-direction: column;
+    width: 90%;
+    gap: 15px;
+    padding: 25px;
+  }
+
+  .price-section p {
+    font-size: 20px;
+  }
+}
+
+/* =========================
+   PRODUCTS GRID
+========================= */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   BANNER
+========================= */
+@media (max-width: 768px) {
+  .banner-card {
+    height: auto;
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+
+  .banner-text-content {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .overlay {
+    background: rgba(0, 0, 0, 0.75);
+  }
+}
+
+/* =========================
+   FOOTER
+========================= */
+@media (max-width: 768px) {
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .links {
+    margin-top: 20px;
+  }
+
+  .footer-logo img {
+    width: 140px;
+  }
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 18px;
+  }
+
+  .links h4 {
+    font-size: 16px;
+  }
+
+  .links p {
+    font-size: 14px;
   }
 }

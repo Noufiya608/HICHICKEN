@@ -1,3 +1,9 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -303,23 +309,141 @@ button:hover {
 }
 
 /* RESPONSIVE */
+/* =========================
+   GLOBAL FIX
+========================= */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================
+   NAVBAR
+========================= */
 @media (max-width: 768px) {
-  .newsletter-card {
+  .navbar {
     flex-direction: column;
+    gap: 10px;
+    padding: 15px 5%;
+    text-align: center;
+  }
+
+  .navbar nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+/* =========================
+   SHOP CARD
+========================= */
+@media (max-width: 768px) {
+  .shop-card {
+    width: 90%;
+    padding: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .shop-card {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .price-box h2 {
+    font-size: 20px;
+  }
+}
+
+/* =========================
+   SHOP CONTAINER
+========================= */
+@media (max-width: 768px) {
+  .shop-container {
+    padding: 40px 10px;
+    align-items: flex-start;
+  }
+}
+
+/* =========================
+   INPUT FIELD
+========================= */
+@media (max-width: 480px) {
+  .input-group input {
+    padding: 8px;
+  }
+}
+
+/* =========================
+   BUTTON
+========================= */
+@media (max-width: 480px) {
+  button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* =========================
+   BANNER (FOOTER SECTION)
+========================= */
+@media (max-width: 768px) {
+  .banner-card {
+    height: auto;
+    flex-direction: column;
+    padding: 50px 20px;
+  }
+
+  .banner-text-content {
+    padding-left: 0;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .overlay {
+    background: rgba(0, 0, 0, 0.75);
+  }
+}
+
+/* =========================
+   FOOTER
+========================= */
+@media (max-width: 768px) {
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     gap: 20px;
   }
 
-  .newsletter-right {
-    text-align: center;
+  .links {
+    margin-top: 15px;
   }
 
-  .subscribe-box {
-    justify-content: center;
+  .footer-logo img {
+    width: 140px;
+  }
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+@media (max-width: 480px) {
+  .shop-card {
+    border-radius: 15px;
   }
 
-  .footer-bottom {
-    flex-direction: column;
-    text-align: center;
+  .links h4 {
+    font-size: 16px;
+  }
+
+  .links p {
+    font-size: 14px;
   }
 }

@@ -1,35 +1,10 @@
-/* .auth {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
 }
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 300px;
-}
-
-input {
-  padding: 10px;
-  border: 1px solid #ccc;
-}
-
-button {
-  padding: 10px;
-  background: black;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #333;
-} */
-
 /* 🔹 Full Page Background */
 .auth {
   height: 100vh;
@@ -154,10 +129,77 @@ button:hover {
   cursor: pointer;
   font-size: 18px;
 }
-/* 🔹 Mobile Responsive */
-@media (max-width: 400px) {
+/* =========================
+   TABLET & SMALL LAPTOPS
+========================= */
+@media (max-width: 768px) {
   .auth form {
-    width: 90%;
-    padding: 25px;
+    width: 80%;
+    padding: 30px;
+  }
+
+  .auth h2 {
+    font-size: 24px;
+  }
+}
+
+/* =========================
+   MOBILE DEVICES
+========================= */
+@media (max-width: 480px) {
+  .auth {
+    padding: 20px;
+  }
+
+  .auth form {
+    width: 95%;
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .auth h2 {
+    font-size: 20px;
+  }
+
+  .auth input {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .auth button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .auth p {
+    font-size: 12px;
+  }
+}
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+@media (max-width: 360px) {
+  .auth form {
+    width: 100%;
+    padding: 18px;
+  }
+
+  .auth h2 {
+    font-size: 18px;
+  }
+}
+
+/* =========================
+   LANDSCAPE MOBILE FIX
+========================= */
+@media (max-height: 500px) {
+  .auth {
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .auth form {
+    margin: 20px 0;
   }
 }
