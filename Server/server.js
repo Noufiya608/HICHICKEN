@@ -14,7 +14,7 @@ import contactRoutes from "./ROUTES/contactRoutes.js";
 import productRoutes from "./ROUTES/productRoutes.js";
 
 app.use(cors({
-  origin: "https://hichicken2.onrender.com",
+  origin: "https://www.hichicken.in",
   credentials: true
 }));
 
