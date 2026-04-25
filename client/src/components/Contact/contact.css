@@ -440,6 +440,37 @@ html, body {
     font-size: 14px;
   }
 }
+/* മൊബൈൽ വ്യൂവിനുള്ള സെറ്റിംഗ്സ് */
+@media (max-width: 900px) {
+  
+  /* ഫോമിന് പുറത്തുള്ള കണ്ടെയ്നർ (ഇത് വളരെ പ്രധാനമാണ്) */
+  .contactus-wrapper { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* സെന്ററിൽ നിർത്താൻ */
+    align-items: center;     /* സൈഡുകളിൽ നിന്ന് സെന്റർ ആക്കാൻ */
+    min-height: 80vh;        /* സ്ക്രീനിന്റെ ഏകദേശം മുഴുവൻ ഉയരം എടുക്കാൻ */
+    padding: 40px 0;
+  }
+
+  .contact-form {
+    width: 90%;
+    max-width: 450px;
+    margin: 0 auto;         /* ഹൊറിസോണ്ടൽ സെന്ററിംഗ് ഉറപ്പാക്കാൻ */
+    padding: 30px;
+    /* ഫോമിന് ചുറ്റുമുള്ള നിഴൽ അല്പം കൂടി വ്യക്തമാക്കിയാൽ ലുക്ക് കൂടും */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+  }
+
+  /* ഫോമിന് മുകളിലുള്ള ഹീറോ സെക്ഷൻ ഉണ്ടെങ്കിൽ അതിന്റെ ഹൈറ്റ് കുറയ്ക്കുക */
+  .contact-hero {
+    height: 180px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
 
 /* =========================
    INFO SECTION
