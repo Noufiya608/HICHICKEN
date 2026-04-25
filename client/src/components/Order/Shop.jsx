@@ -100,23 +100,65 @@ const Shop = () => {
       </div>
 
       {/* Footer */}
-      <footer className="footer">
-        <div>
-          <h4>About</h4>
-          <p>Fresh halal chicken delivered daily.</p>
+    <div>
+      <section className="banner-container">
+      <div className="banner-card">
+        {/* Background Image Container */}
+        <div className="banner-image-wrapper">
+          <img 
+            src="/heroimage.png" 
+            alt="Fresh Chicken Cuts" 
+            className="bg-image"
+          />
+          <div className="overlay"></div>
         </div>
 
-        <div>
-          <h4>Links</h4>
-          <p>Home</p>
-          <p>Shop</p>
+        {/* Text Content */}
+        <div className="banner-text-content">
+          <h1 className="banner-title">HI CHICKEN</h1>
+          <p className="banner-description">
+            Order fresh, clean, and premium Quality chicken online and 
+            get it delivered in minutes. we ensure every bite is fresh, safe, 
+            and full of flavor.
+          </p>
+          <p className="banner-sub-description">
+            Order From Anywhere Anytime without charging extra 
+            delivery charges. quick scan to order now.
+          </p>
+        </div>
+      </div>
+    </section>
+      <footer className="footer-wrapper">
+       {/* Bottom Footer */}
+      <div className="footer-bottom">
+        <div className="footer-logo">
+  <img src="/logo.jpeg" alt="Company Logo" />
+</div>
+
+        <div className="links">
+          <h4>Products</h4>
+          <p>Boneless</p>
+          <p>Curry cuts</p>
+          <p>Tenderloine</p>
+          <p>Wholechicken</p>
         </div>
 
-        <div>
+        <div className="links">
+          <h4>Linka</h4>
+          <p>FAQs</p>
+          <p>About</p>
+          <p>Help</p>
+        </div>
+
+        <div className="links">
           <h4>Follow</h4>
-          <p>Instagram | Facebook</p>
+          <p>Instagram</p>
+          <p>Facebook</p>
+          
         </div>
-      </footer>
+      </div>
+    </footer>
+    </div>
     </>
   );
 };

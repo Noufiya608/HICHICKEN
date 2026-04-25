@@ -98,11 +98,207 @@
   line-height: 1.5;
 }
 /* FOOTER */
-.footer {
-  background: #921508;
-  color: white;
+.banner-container {
+  padding: 40px 20px;
+  background-color: #000; /* Matches the page background */
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+.banner-card {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 380px; /* Adjust height as needed */
+  border-radius: 24px;
+  overflow: hidden; /* Ensures image/overlay don't spill out */
+  display: flex;
+  align-items: center;
+}
+
+.banner-image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* This creates the dark gradient fade from the left */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right, 
+    rgba(0, 0, 0, 0.9) 20%, 
+    rgba(0, 0, 0, 0.4) 60%, 
+    transparent 100%
+  );
+}
+
+.banner-text-content {
+  position: relative;
+  z-index: 2;
+  padding-left: 60px;
+  max-width: 450px;
+  color: #ffffff;
+}
+
+.banner-title {
+  font-family: 'Times New Roman', serif; /* Matching the serif style in image */
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.banner-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  font-weight: 300;
+  color: #e0e0e0;
+}
+
+.banner-sub-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #bbb;
+}
+
+/* Tablet/Mobile View */
+@media (max-width: 768px) {
+  .banner-card {
+    height: auto;
+    padding: 60px 20px;
+  }
+  
+  .banner-text-content {
+    padding-left: 20px;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .overlay {
+    background: rgba(0, 0, 0, 0.7); /* Solid overlay for better readability on mobile */
+  }
+}
+/* FOOTER */
+.footer-wrapper {
+  background: #000000;
+  padding: 10px ;
+  font-family: Arial, sans-serif;
+}
+
+/* NEWSLETTER CARD */
+.newsletter-card {
+  background: rgb(116, 8, 8);
+  color: white;
+ 
+  align-items: center;
+  margin-left: 50px;
+  margin-right: 50px;
+  
+  border-radius: 25px;
   padding: 40px;
-  margin-bottom: 50px;
+
+}
+.newsletter-card p {
+  margin-left:100px ;
+
+}
+
+.newsletter-card h2 {
+  margin-left:100px ;
+
+}
+
+
+
+
+.subscribe-box img {
+  width: 200px;   /* small size */
+  height: auto;
+  object-fit: contain;
+}
+
+
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.footer-logo img {
+  width: 190px;        /* adjust size here */
+  height: auto;       /* keeps aspect ratio */
+  object-fit: contain;
+}
+
+/* BOTTOM FOOTER */
+.footer-bottom {
+  max-width: 1100px;
+  margin: 50px auto 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.brand h3 {
+  margin-bottom: 8px;
+}
+
+.brand p {
+  color: #ffffff;
+}
+
+.links h4 {
+  margin-bottom: 10px;
+}
+
+.links p {
+  margin: 5px 0;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.links p:hover {
+  color: #ff3c00;
+  transform: translateX(4px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .newsletter-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .newsletter-right {
+    text-align: center;
+  }
+
+  .subscribe-box {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
 }
