@@ -14,9 +14,16 @@ import contactRoutes from "./ROUTES/contactRoutes.js";
 import productRoutes from "./ROUTES/productRoutes.js";
 
 app.use(cors({
-  origin: "https://www.hichicken.in",
+  origin: [
+    "https://www.hichicken.in",
+    "https://hichicken.in",
+    "https://hichicken2.onrender.com",
+    "http://localhost:5173"
+  ],
   credentials: true
 }));
+
+app.options("*", cors());
 
 app.use(express.json());
 
