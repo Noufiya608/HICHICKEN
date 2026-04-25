@@ -24,7 +24,7 @@ export default function Forgot() {
   // 🔹 Reset Password
   const resetPassword = async () => {
     try {
-      await axios.post("https://www.hichicken.in/api/auth/reset-password", {
+      await axios.post("https://hichicken1.onrender.com/api/auth/reset-password", {
         email,
         otp,
         newPassword

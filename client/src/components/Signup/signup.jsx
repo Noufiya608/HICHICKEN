@@ -26,7 +26,7 @@ export default function Signup() {
     try {
       console.log(form); // debug
 
-      await axios.post("https://www.hichicken.in/api/auth/signup", form);
+      await axios.post("https://hichicken1.onrender.com/api/auth/signup", form);
 
       alert("✅ Signup successful");
 
