@@ -4,8 +4,9 @@ import { addProduct, getProducts } from "../CONTROLLER/productController.js";
 
 const router = express.Router();
 
-// 🔥 routes → controller
-router.post("/add", upload.single("image"), addProduct);
+// 🔥 VERY IMPORTANT → "image" must match frontend field name
+router.post("/", upload.single("image"), addProduct);
+
 router.get("/", getProducts);
 
 export default router;
