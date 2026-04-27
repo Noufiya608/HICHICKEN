@@ -117,7 +117,7 @@ const trend = getTrend();
             <div className="card" key={item._id}>
              
                <img src={item.image} alt={item.name} />
-                alt={item.name}
+               
               
               <h4>{item.name}</h4>
               <p>₹{item.price}</p>
