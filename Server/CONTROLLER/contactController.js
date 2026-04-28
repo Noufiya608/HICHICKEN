@@ -15,7 +15,7 @@ export const sendContact = async (req, res) => {
 
     await resend.emails.send({
       from: "Hi Chicken <onboarding@resend.dev>",
-      to: "noufiyamn92@gmail.com", // ✅ FIXED
+      to: EMAIL_TO, // ✅ FIXED
       subject: `New Message from ${name}`,
       html: `
         <h3>New Contact Message</h3>
