@@ -24,12 +24,17 @@ const handleChange = (e) => {
   e.preventDefault();
 
   try {
-    await axios.post("https://hichicken1.onrender.com/api/contact", form);
+    await axios.post(
+      "https://hichicken1.onrender.com/api/contact",
+      form,
+      { timeout: 15000 }
+    );
 
-    alert("✅ Message sent successfully!");
-    setForm({ name: "", email: "", message: "" });
+    alert("✅ Message sent successfully!");   // ✅ ADD THIS
+    setForm({ name: "", email: "", message: "" }); // ✅ RESET FORM
 
   } catch (error) {
+    console.log("ERROR:", error.response || error.message);
     alert("❌ Failed to send message");
   }
 };
@@ -63,30 +68,32 @@ const handleChange = (e) => {
         {/* 🔹 Form */}
         <form onSubmit={submit} className="contact-form">
           <h2>Send Message</h2>
+<input
+  type="text"
+  name="name"
+  placeholder="Your Name"
+  value={form.name}
+  onChange={handleChange}
+  required
+/>
 
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            onChange={handleChange}
-            required
-          />
+<input
+  type="email"
+  name="email"
+  placeholder="Your Email"
+  value={form.email}
+  onChange={handleChange}
+  required
+/>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            onChange={handleChange}
-            required
-          />
-
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            rows="5"
-            onChange={handleChange}
-            required
-          ></textarea>
+<textarea
+  name="message"
+  placeholder="Your Message"
+  rows="5"
+  value={form.message}
+  onChange={handleChange}
+  required
+></textarea>
 
           <button type="submit">Send Message</button>
         </form>
