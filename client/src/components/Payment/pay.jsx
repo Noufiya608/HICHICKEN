@@ -52,7 +52,7 @@ const Payment = () => {
         setLoading(false);
         return;
       }
-
+    
       // 2️⃣ Create order from backend
       const { data } = await axios.post(
         "https://hichicken1.onrender.com/api/payment/create",

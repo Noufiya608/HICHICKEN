@@ -4,17 +4,19 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true },
   password: String,
-
-  address: {
-    type: String,
-    required: true,
-    enum: ["Manacaud", "Ambalathara", "Azad Nagar"]   // 👈 dropdown values
-  },
-
-  guestaddress: {
-    type: String,
-    required: false,
-    enum: ["Manacaud", "Ambalathara", "Azad Nagar"]   // 👈 dropdown values
+ location: {
+    lat: {
+      type: Number,
+      default: null
+    },
+    lng: {
+      type: Number,
+      default: null
+    },
+    addressText: {
+      type: String,
+      default: ""
+    }
   },
 
   isAdmin: {
@@ -26,5 +28,4 @@ const userSchema = new mongoose.Schema({
   otpExpire: Date
 
 }, { timestamps: true });
-
 export default mongoose.model("User", userSchema);

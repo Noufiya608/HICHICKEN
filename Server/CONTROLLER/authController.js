@@ -6,8 +6,8 @@ import sendEmail from "../Utils/sendEmail.js";
 // 🔹 Signup
 export const signup = async (req, res) => {
   try {
-    const { name, email, password, address, guestaddress } = req.body;
-// check existing user
+    const { name, email, password, location } = req.body;
+
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
@@ -19,8 +19,7 @@ export const signup = async (req, res) => {
       name,
       email,
       password: hash,
-      address,
-      guestaddress
+      location
     });
 
     await newUser.save();
@@ -34,7 +33,6 @@ export const signup = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 // 🔹 Login
 export const login = async (req, res) => {
   try {

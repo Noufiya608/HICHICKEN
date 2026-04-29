@@ -6,44 +6,98 @@ export default function Signup() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    password: "",
-    address: "",
-    guestaddress: ""
+    password: ""
   });
 
-  // ✅ should be boolean (not string)
-  const [showPassword, setShowPassword] = useState(false);
+  const [location, setLocation] = useState({
+    lat: null,
+    lng: null,
+    addressText: ""
+  });
 
-  // ✅ locations same as backend enum
-  const locations = ["Manacaud", "Ambalathara", "Azad Nagar"];
+  const [loading, setLoading] = useState(false);
+  const [mode, setMode] = useState(""); // gps or manual
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
+  const handleAddressChange = (e) =>
+    setLocation({ ...location, addressText: e.target.value });
+
+  // 📍 GPS LOCATION
+  const getCurrentLocation = () => {
+    if (!navigator.geolocation) {
+      alert("GPS not supported");
+      return;
+    }
+
+    setLoading(true);
+    setMode("gps");
+
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+
+        try {
+          const res = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`
+          );
+          const data = await res.json();
+
+          setLocation({
+            lat,
+            lng,
+            addressText: data.display_name
+          });
+
+        } catch (err) {
+          setLocation({ lat, lng, addressText: "" });
+        }
+
+        setLoading(false);
+      },
+      () => {
+        setLoading(false);
+        alert("Failed to get location");
+      }
+    );
+  };
+
   const submit = async (e) => {
     e.preventDefault();
 
+    // validation
+    if (mode === "manual" && !location.addressText) {
+      alert("Please enter address");
+      return;
+    }
+
+    if (mode === "gps" && !location.lat) {
+      alert("Please enable GPS");
+      return;
+    }
+
+    if (!mode) {
+      alert("Select GPS or Manual address");
+      return;
+    }
+
     try {
-      console.log(form); // debug
+      await axios.post(
+        "https://hichicken1.onrender.com/api/auth/signup",
+        {
+          ...form,
+          location
+        }
+      );
 
-      await axios.post("https://hichicken1.onrender.com/api/auth/signup", form);
-
-      alert("✅ Signup successful");
-
-      // optional reset
-      setForm({
-        name: "",
-        email: "",
-        password: "",
-        address: "",
-        guestaddress: ""
-      });
-
+      alert("Signup successful");
       window.location.href = "/";
 
     } catch (err) {
-      console.log(err.response?.data);
-      alert(err.response?.data?.message || "Signup failed");
+      console.log(err);
+      alert("Signup failed");
     }
   };
 
@@ -55,7 +109,6 @@ export default function Signup() {
         <input
           name="name"
           placeholder="Name"
-          value={form.name}
           onChange={handleChange}
           required
         />
@@ -63,60 +116,73 @@ export default function Signup() {
         <input
           name="email"
           placeholder="Email"
-          value={form.email}
           onChange={handleChange}
           required
         />
 
-        {/* 🔹 Password with eye icon */}
-        <div className="password-field">
-          <input
-            type={showPassword ? "text" : "password"}
-            name="password"
-            placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
-            required
-          />
-          <span onClick={() => setShowPassword(!showPassword)}>
-            {showPassword ? "🙈" : "👁️"}
-          </span>
-        </div>
-
-        {/* ✅ Address Dropdown (REQUIRED) */}
-        <select
-          name="address"
-          value={form.address}
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
           onChange={handleChange}
           required
-        >
-          <option value="">Select Address</option>
-          {locations.map((loc) => (
-            <option key={loc} value={loc}>
-              {loc}
-            </option>
-          ))}
-        </select>
+        />
 
-        {/* ✅ Guest Address Dropdown (OPTIONAL) */}
-        <select
-          name="guestaddress"
-          value={form.guestaddress}
-          onChange={handleChange}
-        >
-          <option value="">Select Guest Address(Optional)</option>
-          {locations.map((loc) => (
-            <option key={loc} value={loc}>
-              {loc}
-            </option>
-          ))}
-        </select>
+        {/* 🔘 CHOOSE MODE */}
+        <div style={{ marginTop: "10px" }}>
+            <button
+            type="button"
+            onClick={() => setMode("manual")}
+            style={{
+              background: mode === "manual" ? "red" : "blue",
+              color: "white"
+            }}
+          >
+            ✍️ Enter Address Manually
+          </button>
+        
+          <button
+            type="button"
+            onClick={getCurrentLocation}
+            style={{
+              background: mode === "gps" ? "red" : "blue",
+              color: "white",
+              marginRight: "10px"
+            }}
+          >
+            📍 Use Current Location
+          </button>
+</div>
+        
 
-        <button>Sign up</button>
+        {/* 📍 GPS RESULT */}
+        {mode === "gps" && location.lat && (
+          <div style={{ marginTop: "10px" }}>
+            <p>Latitude: {location.lat}</p>
+            <p>Longitude: {location.lng}</p>
+            {location.addressText && (
+              <p>{location.addressText}</p>
+            )}
+          </div>
+        )}
 
-        <p>
-          Already have an account? <a href="/login">Login</a>
-        </p>
+        {/* ✍️ MANUAL ADDRESS */}
+        {mode === "manual" && (
+          <textarea
+            placeholder="Enter full delivery address"
+            value={location.addressText}
+            onChange={handleAddressChange}
+            style={{
+              width: "100%",
+              marginTop: "10px",
+              padding: "8px"
+            }}
+          />
+        )}
+
+        <button type="submit">
+          {loading ? "Processing..." : "Sign up"}
+        </button>
       </form>
     </div>
   );
