@@ -60,7 +60,7 @@ const trend = getTrend();
       {/* Navbar */}
       <header className="navbar">
         <div className="logo-container">
-    <img src="/logo.jpeg" alt="Hi Chicken Logo" className="logo-img" />
+    <img src="/Chicken Logo.jpg" alt="Hi Chicken Logo" className="logo-img" />
   </div>
         <nav>
           <a href="/">Home</a>
