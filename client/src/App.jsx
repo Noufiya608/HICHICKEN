@@ -15,6 +15,7 @@ import AdminRoute from './components/Admin/AdminRoute.jsx';
 import Contact from './components/Contact/contact.jsx';
 import About from './components/Aboutus/About.jsx';
 import ProtectedRoute from './ProtectedRoute.jsx';
+import Success from './components/Signup/success.jsx';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
          <Route path="/adminlogin" element={<AdminLogin />} /> 
           <Route path="/contactus" element={<Contact />} /> 
           <Route path="/About" element={<About />} /> 
+          <Route path="/success" element={<Success />} />
       
 <Route
   path="/admin"
