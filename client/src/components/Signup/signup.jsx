@@ -30,7 +30,7 @@ export default function Signup() {
       alert("GPS not supported");
       return;
     }
-
+    
     setLoading(true);
     setMode("gps");
 

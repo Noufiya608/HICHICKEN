@@ -27,9 +27,18 @@ html, body {
   color: #4d2e2e;
 }
 
-.logo {
-  font-weight: bold;
-  color: #7d2e2e;
+/* Logo container */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Logo image */
+.logo-img {
+  height: 50px;      /* adjust based on your logo */
+  width: auto;
+  object-fit: contain;
+  cursor: pointer;
 }
 .cart{
   font-size: larger;
