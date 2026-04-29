@@ -34,7 +34,7 @@ const Payment = () => {
 
       // 2️⃣ Razorpay options
       const options = {
-        key: "rzp_test_SeRoRZx6PRcPl4", // ⚠️ Replace with ENV later
+        key: "rzp_live_SjEZLwkY4C3zOo", // ⚠️ Replace with ENV later
         amount: razorpayOrder.amount,
         currency: razorpayOrder.currency,
         name: "HI CHICKEN",
