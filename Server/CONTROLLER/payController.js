@@ -1,6 +1,9 @@
 import Razorpay from "razorpay";
 import crypto from "crypto";
 import Pay from "../MODEL/payModel.js";
+import dotenv from "dotenv";
+dotenv.config();
+
 
 // 🔍 DEBUG: Check ENV values
 console.log("🔑 RAZORPAY KEY ID:", process.env.RAZORPAY_KEY_ID);
@@ -17,7 +20,9 @@ export const createPayment = async (req, res) => {
     const razorpay = new Razorpay({   // ✅ MOVE HERE
       key_id: process.env.RAZORPAY_KEY_ID,
       key_secret: process.env.RAZORPAY_KEY_SECRET,
+      
     });
+   
 
     const { amount } = req.body;
 
