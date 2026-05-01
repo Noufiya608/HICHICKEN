@@ -196,23 +196,29 @@ export const updateMyProfile = async (req, res) => {
   try {
     const userId = req.user.id;
 
-    const updatedUser = await User.findByIdAndUpdate(
-      userId,
-      {
-        name: req.body.name,
-        address: req.body.address
-      },
-      {
-        new: true,              // ✅ returns updated data
-        runValidators: true
-      }
-    ).select("-password");
+    let updateData = {
+      name: req.body.name
+    };
 
-    if (!updatedUser) {
-      return res.status(404).json({ message: "User not found" });
+    // ✅ If location is provided → REMOVE address
+    if (req.body.location && req.body.location.lat) {
+      updateData.location = req.body.location;
+      updateData.address = ""; // 🔥 CLEAR OLD ADDRESS
     }
 
-    res.json(updatedUser); // ✅ IMPORTANT
+    // ✅ If address is provided → REMOVE location
+    if (req.body.address) {
+      updateData.address = req.body.address;
+      updateData.location = {}; // 🔥 CLEAR OLD LOCATION
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      updateData,
+      { new: true }
+    ).select("-password");
+
+    res.json(updatedUser);
 
   } catch (err) {
     res.status(500).json({ error: err.message });
