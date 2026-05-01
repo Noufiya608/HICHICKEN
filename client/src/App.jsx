@@ -16,6 +16,7 @@ import Contact from './components/Contact/contact.jsx';
 import About from './components/Aboutus/About.jsx';
 import ProtectedRoute from './ProtectedRoute.jsx';
 import Success from './components/Signup/success.jsx';
+import Profile from './components/Profile/profile.jsx';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Price />} />
          <Route path="/order" element={<Order />} />
+               <Route path="/profile" element={<Profile />} />
       <Route
   path="/pay"
   element={

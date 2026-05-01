@@ -33,7 +33,7 @@ const orderData = location.state;
 if (orderData) {
   navigate("/pay", { state: orderData });
 } else {
-  navigate("/home");
+  navigate("/");
 }
 
       setIsError(false);
