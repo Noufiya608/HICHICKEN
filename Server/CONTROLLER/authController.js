@@ -194,44 +194,52 @@ export const makeAdmin = async (req, res) => {
 //Update User
 export const updateMyProfile = async (req, res) => {
   try {
+    console.log("🔥 UPDATE API HIT");
+    console.log("📤 BODY:", req.body);
+
     const userId = req.user.id;
 
     let updateData = {};
 
-    // ✅ Always update name
-    if (req.body.name !== undefined) {
+    if (req.body.name) {
       updateData.name = req.body.name;
     }
 
-    // ✅ PRIORITY: LOCATION (if lat exists)
-    if (req.body.location && req.body.location.lat) {
-      updateData = {
-        ...updateData,
-        location: req.body.location,
-        address: "" // clear address
-      };
-    } 
-    // ✅ ELSE: ADDRESS
-    else if (req.body.address !== undefined) {
-      updateData = {
-        ...updateData,
-        address: req.body.address,
-        location: {} // clear location
+    if (req.body.address !== undefined) {
+      updateData.address = req.body.address;
+      updateData.location = {
+        lat: null,
+        lng: null,
+        addressText: ""
       };
     }
 
-    const updatedUser = await User.findByIdAndUpdate(
-      userId,
-      { $set: updateData },
-      { new: true }
-    ).select("-password");
+    if (
+      req.body.location &&
+      req.body.location.lat &&
+      req.body.location.lng
+    ) {
+      updateData.location = req.body.location;
+      updateData.address = "";
+    }
 
-    console.log("✅ FINAL UPDATED USER:", updatedUser);
+    console.log("🛠 FORCE UPDATE:", updateData);
 
-    res.json(updatedUser);
+    const updatedUser = await User.updateOne(
+      { _id: userId },
+      { $set: updateData }
+    );
+
+    console.log("📦 UPDATE RESULT:", updatedUser);
+
+    const freshUser = await User.findById(userId).select("-password");
+
+    console.log("✅ FINAL USER:", freshUser);
+
+    res.json(freshUser);
 
   } catch (err) {
-    console.error("❌ UPDATE ERROR:", err);
+    console.error("❌ ERROR:", err);
     res.status(500).json({ error: err.message });
   }
 };

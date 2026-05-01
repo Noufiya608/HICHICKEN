@@ -4,7 +4,14 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true },
   password: String,
- location: {
+
+  // ✅ ADD THIS
+  address: {
+    type: String,
+    default: ""
+  },
+
+  location: {
     lat: {
       type: Number,
       default: null
