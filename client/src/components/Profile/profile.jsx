@@ -6,36 +6,38 @@ const Profile = () => {
   const [user, setUser] = useState({
     name: "",
     email: "",
-    location: ""
+    address: "",
+    location: {
+      lat: "",
+      lng: "",
+      addressText: ""
+    }
   });
 
   const [editMode, setEditMode] = useState(false);
 
+  // ✅ Fetch Profile
   useEffect(() => {
-    console.log("✅ Profile page loaded");
-
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        console.log("🔑 TOKEN:", token);
 
-        if (!token) {
-          console.log("❌ No token found. Please login.");
-          return;
-        }
-
-        const res = await axios.get("https://hichicken1.onrender.com/api/auth/me", {
-          headers: {
-            Authorization: `Bearer ${token}`
+        const res = await axios.get(
+          "https://hichicken1.onrender.com/api/auth/me",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
           }
-        });
+        );
 
-        console.log("📦 PROFILE DATA:", res.data);
+        console.log("📦 PROFILE:", res.data);
 
         setUser({
           name: res.data.name || "",
           email: res.data.email || "",
-          location: res.data.location || ""
+          address: res.data.address || "",
+          location: res.data.location || {}
         });
 
       } catch (err) {
@@ -46,12 +48,58 @@ const Profile = () => {
     fetchProfile();
   }, []);
 
-  // 🔹 Handle input changes
+  // 🔹 Handle Input Change
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  // 🔹 Save updated profile
+  // 🔹 Get Current Location
+  const handleGetLocation = () => {
+    if (!navigator.geolocation) {
+      alert("Geolocation not supported");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+
+        console.log("📍 LAT:", lat, "LNG:", lng);
+
+        try {
+          const res = await axios.get(
+            `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`
+          );
+
+          const address = res.data.display_name;
+
+          setUser((prev) => ({
+            ...prev,
+            address: address,
+            location: {
+              lat,
+              lng,
+              addressText: address
+            }
+          }));
+
+        } catch (err) {
+          console.log("❌ Address fetch failed");
+
+          setUser((prev) => ({
+            ...prev,
+            location: { lat, lng }
+          }));
+        }
+      },
+      () => {
+        alert("Location permission denied");
+      }
+    );
+  };
+
+  // 🔹 Save Profile
   const handleSave = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -60,7 +108,8 @@ const Profile = () => {
         "https://hichicken1.onrender.com/api/auth/me",
         {
           name: user.name,
-          location: user.location
+          address: user.address,
+          location: user.location // ✅ IMPORTANT
         },
         {
           headers: {
@@ -69,22 +118,27 @@ const Profile = () => {
         }
       );
 
-      console.log("✅ UPDATED DATA:", res.data);
+      console.log("✅ UPDATED:", res.data);
 
-      setUser(res.data);
+     setUser(res.data);
+
       setEditMode(false);
-      alert("Profile updated successfully");
 
     } catch (err) {
       console.error("❌ UPDATE ERROR:", err.response?.data || err.message);
     }
   };
 
+  // ✅ CONDITIONS
+  const hasLocation =
+    user.location?.lat && user.location?.lng;
+
   return (
     <div className="profile-container">
       <div className="profile-card">
         <h2>My Profile</h2>
 
+        {/* NAME */}
         <div className="form-group">
           <label>Name</label>
           <input
@@ -96,31 +150,73 @@ const Profile = () => {
           />
         </div>
 
+        {/* EMAIL */}
         <div className="form-group">
           <label>Email</label>
-          <input
-            type="email"
-            value={user.email}
-            disabled
-          />
+          <input type="email" value={user.email} disabled />
         </div>
 
-        <div className="form-group">
-          <label>Location</label>
-          <textarea
-            name="location"
-            value={user.location}
-            onChange={handleChange}
-            disabled={!editMode}
-          />
-        </div>
+        {/* ADDRESS (ONLY IF LOCATION NOT SET) */}
+        {!hasLocation && (
+          <div className="form-group">
+            <label>Address</label>
+            <textarea
+              name="address"
+              value={user.address}
+              onChange={handleChange}
+              disabled={!editMode}
+              placeholder="Enter your address"
+            />
 
+            {/* 📍 BUTTON */}
+            {editMode && (
+              <button
+                style={{ marginTop: "10px" }}
+                onClick={handleGetLocation}
+              >
+                📍 Use Current Location
+              </button>
+            )}
+          </div>
+        )}
+
+        {/* LOCATION DISPLAY */}
+        {hasLocation && (
+          <div className="form-group">
+            <label>Location</label>
+            <p>
+              📍 {user.location.lat}, {user.location.lng}
+            </p>
+
+            {user.location?.addressText && (
+              <p>{user.location.addressText}</p>
+            )}
+
+            {/* SWITCH BACK */}
+            {editMode && (
+              <button
+                style={{ marginTop: "10px" }}
+                onClick={() =>
+                  setUser({
+                    ...user,
+                    location: {},
+                    address: ""
+                  })
+                }
+              >
+                Use Manual Address Instead
+              </button>
+            )}
+          </div>
+        )}
+
+        {/* BUTTONS */}
         {!editMode ? (
-          <button className="edit-btn" onClick={() => setEditMode(true)}>
+          <button onClick={() => setEditMode(true)}>
             Edit Profile
           </button>
         ) : (
-          <button className="save-btn" onClick={handleSave}>
+          <button onClick={handleSave}>
             Save Changes
           </button>
         )}

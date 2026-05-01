@@ -1,0 +1,132 @@
+/* 🔥 Background */
+.profile-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* 🔥 Glass Card */
+.profile-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+/* Hover Glow */
+.profile-card:hover {
+  transform: translateY(-5px);
+}
+
+/* 🔥 Title */
+.profile-card h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* 🔥 Form Group */
+.form-group {
+  margin-bottom: 18px;
+}
+
+/* 🔥 Labels */
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* 🔥 Inputs & Textarea */
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+/* Placeholder color */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Focus effect */
+.form-group input:focus,
+.form-group textarea:focus {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Disabled */
+.form-group input:disabled,
+.form-group textarea:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* 🔥 Location text */
+.form-group p {
+  font-size: 14px;
+  margin-top: 5px;
+  opacity: 0.9;
+}
+
+/* 🔥 Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* Edit Button */
+button:first-of-type {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+}
+
+/* Save Button */
+button:last-of-type {
+  background: linear-gradient(135deg, #00ff87, #60efff);
+  color: #000;
+}
+
+/* Hover effect */
+button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* 🔥 Switch Button */
+button:nth-of-type(2) {
+  background: linear-gradient(135deg, #ff7eb3, #ff758c);
+  margin-bottom: 10px;
+}
+
+/* 🔥 Responsive */
+@media (max-width: 500px) {
+  .profile-card {
+    padding: 20px;
+  }
+}
