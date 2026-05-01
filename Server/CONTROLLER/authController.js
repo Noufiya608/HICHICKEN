@@ -196,31 +196,42 @@ export const updateMyProfile = async (req, res) => {
   try {
     const userId = req.user.id;
 
-    let updateData = {
-      name: req.body.name
-    };
+    let updateData = {};
 
-    // ✅ If location is provided → REMOVE address
-    if (req.body.location && req.body.location.lat) {
-      updateData.location = req.body.location;
-      updateData.address = ""; // 🔥 CLEAR OLD ADDRESS
+    // ✅ Always update name
+    if (req.body.name !== undefined) {
+      updateData.name = req.body.name;
     }
 
-    // ✅ If address is provided → REMOVE location
-    if (req.body.address) {
-      updateData.address = req.body.address;
-      updateData.location = {}; // 🔥 CLEAR OLD LOCATION
+    // ✅ PRIORITY: LOCATION (if lat exists)
+    if (req.body.location && req.body.location.lat) {
+      updateData = {
+        ...updateData,
+        location: req.body.location,
+        address: "" // clear address
+      };
+    } 
+    // ✅ ELSE: ADDRESS
+    else if (req.body.address !== undefined) {
+      updateData = {
+        ...updateData,
+        address: req.body.address,
+        location: {} // clear location
+      };
     }
 
     const updatedUser = await User.findByIdAndUpdate(
       userId,
-      updateData,
+      { $set: updateData },
       { new: true }
     ).select("-password");
+
+    console.log("✅ FINAL UPDATED USER:", updatedUser);
 
     res.json(updatedUser);
 
   } catch (err) {
+    console.error("❌ UPDATE ERROR:", err);
     res.status(500).json({ error: err.message });
   }
 };
