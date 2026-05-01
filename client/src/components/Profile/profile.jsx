@@ -11,54 +11,67 @@ const Profile = () => {
 
   const [editMode, setEditMode] = useState(false);
 
-  // 🔹 Fetch profile
+  // ✅ Runs when page loads
   useEffect(() => {
+    console.log("✅ Profile page loaded");
+
     const fetchProfile = async () => {
       try {
+        const token = localStorage.getItem("token");
+        console.log("🔑 TOKEN:", token);
+
+        if (!token) {
+          console.log("❌ No token found");
+          return;
+        }
+
         const res = await axios.get("https://hichicken1.onrender.com/api/auth/user/:id", {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`
+            Authorization: `Bearer ${token}`
           }
         });
 
-        console.log("PROFILE:", res.data);
+        console.log("📦 PROFILE DATA:", res.data);
         setUser(res.data);
 
       } catch (err) {
-        console.error(err);
+        console.error("❌ ERROR:", err.response?.data || err.message);
       }
     };
 
     fetchProfile();
   }, []);
 
-  // 🔹 Handle input
+  // ✅ Handle input change
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  // 🔹 Save profile
+  // ✅ Save profile
   const handleSave = async () => {
     try {
+      const token = localStorage.getItem("token");
+
       const res = await axios.put(
-        "/api/user/me",
+        "http://localhost:5000/api/user/me",
         {
           name: user.name,
           location: user.location
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`
+            Authorization: `Bearer ${token}`
           }
         }
       );
 
+      console.log("✅ UPDATED:", res.data);
       setUser(res.data);
       setEditMode(false);
       alert("Profile updated successfully");
 
     } catch (err) {
-      console.error(err);
+      console.error("❌ UPDATE ERROR:", err.response?.data || err.message);
     }
   };
 

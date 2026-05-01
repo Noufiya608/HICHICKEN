@@ -8,7 +8,9 @@ import {
   deleteAllUsers,
   getAllUsers,
   getUserById,
-  makeAdmin
+  makeAdmin,
+  getMyProfile,
+  updateUser
 } from "../CONTROLLER/authController.js";
 import { isAdmin } from "../Middleware/adminMiddleware.js";
 import { protect } from "../Middleware/authMiddleware.js";
@@ -20,6 +22,8 @@ router.post("/login", login);
 router.post("/send-otp", sendOTP);
 router.post("/reset-password", resetPassword);
 
+router.get("/me", protect, getMyProfile);   // ✅ FIRST
+router.put("/me", protect, updateUser);
 router.delete("/user/:id", deleteUserById);
 router.delete("/users", deleteAllUsers);
 router.get("/users", getAllUsers);
