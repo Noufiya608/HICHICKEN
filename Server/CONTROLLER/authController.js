@@ -192,20 +192,30 @@ export const makeAdmin = async (req, res) => {
 
 
 //Update User
-export const updateUser = async (req, res) => {
+export const updateMyProfile = async (req, res) => {
   try {
-    const { id } = req.params;
+    const userId = req.user.id;
 
     const updatedUser = await User.findByIdAndUpdate(
-      id,
-      req.body,
-      { new: true }
-    );
+      userId,
+      {
+        name: req.body.name,
+        address: req.body.address
+      },
+      {
+        new: true,              // ✅ returns updated data
+        runValidators: true
+      }
+    ).select("-password");
 
-    res.status(200).json(updatedUser);
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
 
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.json(updatedUser); // ✅ IMPORTANT
+
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };
 //Delete User

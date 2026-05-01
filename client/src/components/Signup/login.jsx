@@ -26,7 +26,9 @@ const [showPassword, setShowPassword] = useState("")
         form
       );
 
-    localStorage.setItem("token", "userLoggedIn");
+localStorage.setItem("token", res.data.token);
+
+console.log("✅ REAL TOKEN:", res.data.token);
 
 const orderData = location.state;
 

@@ -10,7 +10,7 @@ import {
   getUserById,
   makeAdmin,
   getMyProfile,
-  updateUser
+  updateMyProfile
 } from "../CONTROLLER/authController.js";
 import { isAdmin } from "../Middleware/adminMiddleware.js";
 import { protect } from "../Middleware/authMiddleware.js";
@@ -23,7 +23,7 @@ router.post("/send-otp", sendOTP);
 router.post("/reset-password", resetPassword);
 
 router.get("/me", protect, getMyProfile);   // ✅ FIRST
-router.put("/me", protect, updateUser);
+router.put("/me", protect, updateMyProfile);
 router.delete("/user/:id", deleteUserById);
 router.delete("/users", deleteAllUsers);
 router.get("/users", getAllUsers);

@@ -11,7 +11,6 @@ const Profile = () => {
 
   const [editMode, setEditMode] = useState(false);
 
-  // ✅ Runs when page loads
   useEffect(() => {
     console.log("✅ Profile page loaded");
 
@@ -21,18 +20,23 @@ const Profile = () => {
         console.log("🔑 TOKEN:", token);
 
         if (!token) {
-          console.log("❌ No token found");
+          console.log("❌ No token found. Please login.");
           return;
         }
 
-        const res = await axios.get("https://hichicken1.onrender.com/api/auth/user/:id", {
+        const res = await axios.get("https://hichicken1.onrender.com/api/auth/me", {
           headers: {
             Authorization: `Bearer ${token}`
           }
         });
 
         console.log("📦 PROFILE DATA:", res.data);
-        setUser(res.data);
+
+        setUser({
+          name: res.data.name || "",
+          email: res.data.email || "",
+          location: res.data.location || ""
+        });
 
       } catch (err) {
         console.error("❌ ERROR:", err.response?.data || err.message);
@@ -42,18 +46,18 @@ const Profile = () => {
     fetchProfile();
   }, []);
 
-  // ✅ Handle input change
+  // 🔹 Handle input changes
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  // ✅ Save profile
+  // 🔹 Save updated profile
   const handleSave = async () => {
     try {
       const token = localStorage.getItem("token");
 
       const res = await axios.put(
-        "http://localhost:5000/api/user/me",
+        "https://hichicken1.onrender.com/api/auth/me",
         {
           name: user.name,
           location: user.location
@@ -65,7 +69,8 @@ const Profile = () => {
         }
       );
 
-      console.log("✅ UPDATED:", res.data);
+      console.log("✅ UPDATED DATA:", res.data);
+
       setUser(res.data);
       setEditMode(false);
       alert("Profile updated successfully");
@@ -85,7 +90,7 @@ const Profile = () => {
           <input
             type="text"
             name="name"
-            value={user?.name || ""}
+            value={user.name}
             onChange={handleChange}
             disabled={!editMode}
           />
@@ -95,7 +100,7 @@ const Profile = () => {
           <label>Email</label>
           <input
             type="email"
-            value={user?.email || ""}
+            value={user.email}
             disabled
           />
         </div>
@@ -104,7 +109,7 @@ const Profile = () => {
           <label>Location</label>
           <textarea
             name="location"
-            value={user?.location || ""}
+            value={user.location}
             onChange={handleChange}
             disabled={!editMode}
           />
