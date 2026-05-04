@@ -2,17 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./pay.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react"; // 👈 add useEffect
 
 const Payment = () => {
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth" // optional (remove if you want instant jump)
-    });
-  }, []);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const order = location.state;
 

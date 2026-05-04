@@ -44,6 +44,12 @@ function App() {
           <Route path="/contactus" element={<Contact />} /> 
           <Route path="/About" element={<About />} /> 
           <Route path="/success" element={<Success />} />
+              <Route path="/scroll" element={<BrowserRouter>
+  <ScrollToTop />
+  <Routes>
+    ...
+  </Routes>
+</BrowserRouter>} />
       
 <Route
   path="/admin"
