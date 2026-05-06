@@ -28,6 +28,19 @@ body {
   background: white;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
+/* Logo container */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Logo image */
+.logo-img {
+  height: 50px;      /* adjust based on your logo */
+  width: auto;
+  object-fit: contain;
+  cursor: pointer;
+}
 /* Card */
 .shop-card {
   background: #fff;

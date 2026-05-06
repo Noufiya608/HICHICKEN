@@ -43,7 +43,9 @@ const handleChange = (e) => {
     <>
      {/* Navbar */}
           <header className="navbar">
-            <h2 className="logo">HI CHICKEN</h2>
+           <div className="logo-container">
+    <img src="/Chicken Logo.jpg" alt="Hi Chicken Logo" className="logo-img" />
+  </div>
             <nav>
               <a href="/">Home</a>
              
