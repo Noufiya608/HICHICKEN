@@ -35,20 +35,20 @@ export default function About() {
         <div className="about-text">
           <h2>HI CHICKEN</h2>
           <p>
-           ഇനി ശുദ്ധമായ ചിക്കൻ തേടി നിങ്ങൾ എവിടെയും പോകേണ്ടതില്ല. പ്രകൃതിദത്തവും ആരോഗ്യകരവുമായ രീതിയിൽ തയ്യാറാക്കിയ ചിക്കൻ നിങ്ങളുടെ വീട്ടുപടിക്കൽ ഞങ്ങൾ എത്തിക്കുന്നു
+           No more searching everywhere for pure chicken. We deliver naturally prepared, healthy chicken straight to your doorstep.
           </p>
 
-          <h2>നമ്മുടെ ലക്ഷ്യം </h2>
+          <h2>OUR AIM </h2>
           <p>
-            നാം കഴിക്കുന്ന ചിക്കൻ  പ്രകൃതിദത്തവും ആരോഗ്യകരവുമായ രീതിയിൽ തയ്യാറാക്കിയ ആണോ അല്ലയോ എന്ന് ഉറപ്പുവരുത്തുന്നതാണ് ഏറ്റവും പ്രധാനപ്പെട്ടത്. അതിനാലാണ് ഹായ് ചിക്കൻ ദിവസേന പുതുതായി തയ്യാറാക്കിയ, 100% ഹലാൽ ചിക്കൻ നിങ്ങളുടെ മുന്നിലെത്തിക്കുന്നത്. കൂടാതെ, ഡെലിവറി ചാർജില്ലാതെ തന്നെ ഈ സേവനം നിങ്ങൾക്ക് ലഭ്യമാക്കുന്നതാണ് .
+            The most important thing is ensuring that the chicken we eat is prepared in a natural and healthy way. That’s why Hi Chicken brings you freshly prepared, 100% Halal chicken every day. Moreover, you can enjoy this service with free delivery charges.
           </p>
 
-          <h2>ഞങ്ങളുടെ പ്രതേകതകൾ</h2>
+          <h2>OUR SPECIALITIES</h2>
           <ul>
-            <li>പരമ്പരാഗതമായ ശുദ്ധി (Ethical Purity): വിശ്വാസ്യതയോടെയും എല്ലാവിധ ശുദ്ധിനിയമങ്ങൾ പാലിച്ചും മാത്രമാണ് ഞങ്ങൾ ഓരോ ചിക്കനും തയ്യാറാക്കുന്നത്</li>
-            <li>ഓരോ ദിവസവും പുതുമയോടെ: ദിവസേന പുതുതായി തയ്യാറാക്കിയ ഫ്രഷ് ചിക്കൻ മാത്രമാണ് ഞങ്ങൾ വിതരണം ചെയ്യുന്നത്.</li>
-            <li>സൗജന്യ ഡെലിവറി: അധിക ചിലവുകളെക്കുറിച്ച് ഇനി ആശങ്ക വേണ്ട; ഡെലിവറി ചാർജില്ലാതെ തന്നെ നിങ്ങളുടെ ഇഷ്ടസ്ഥലത്ത് ഞങ്ങൾ ചിക്കൻ എത്തിക്കും</li>
-            <li>എളുപ്പത്തിൽ ഓർഡർ ചെയ്യാം: സമയം ലാഭിക്കാം! വെബ്സൈറ്റിലെ QR കോഡ് സ്കാൻ ചെയ്തുകൊണ്ട് നിങ്ങൾക്ക് നിമിഷങ്ങൾക്കുള്ളിൽ ഓർഡർ നൽകാവുന്നതാണ്</li>
+            <li>Traditional Purity (Ethical Purity): Every chicken is prepared with trust, care, and by strictly following all hygiene and purity standards.</li>
+            <li>Fresh Every Day: We deliver only freshly prepared chicken made fresh every single day.</li>
+            <li>Free Delivery: No need to worry about extra charges; we deliver chicken to your preferred location with absolutely no delivery fee.</li>
+            <li>Easy Ordering: Save your time! Simply scan the QR code on the website and place your order within seconds.</li>
           </ul>
         </div>
         
@@ -57,9 +57,9 @@ export default function About() {
         <div className="notice-box">
           <h3>Important Notice</h3>
           <p>
-            ഞങ്ങൾ ചിക്കൻ ശുചീകരണം, മുറിക്കൽ, പാക്കിംഗ് എന്നിവയിൽ കർശനമായ ശുചിത്വ മാനദണ്ഡങ്ങൾ പാലിക്കുന്നു.
-ഓർഡർ പ്രോസസ്സ് ചെയ്തതിന് ശേഷം അത് റദ്ദാക്കാൻ സാധിക്കില്ല.
-ഡെലിവറി സമയം സ്ഥലവും ആവശ്യകതയും ആശ്രയിച്ച് വ്യത്യാസപ്പെട്ടേക്കാം. <br />  <br /> 
+           We strictly follow hygiene standards in chicken cleaning, cutting, and packaging.
+Once an order is processed, it cannot be cancelled.
+Delivery time may vary depending on the location and demand. <br />  <br /> 
  <img src="/aboutimg.png" alt="" />
           </p>
         </div>

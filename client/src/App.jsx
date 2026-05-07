@@ -3,7 +3,7 @@ import { useState } from 'react'
 import './App.css'
 import Price from "./components/Price/money.jsx";
 import Payment from "./components/Payment/pay.jsx";
-import ScrollToTop from "./components/Scrolltotop.jsx";
+import ScrollToTop from "./components/Scrolltotop/Scrolltotop.jsx";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Order from './components/Order/Shop.jsx';
