@@ -3,6 +3,7 @@ import { useState } from 'react'
 import './App.css'
 import Price from "./components/Price/money.jsx";
 import Payment from "./components/Payment/pay.jsx";
+import ScrollToTop from "./components/Scrolltotop.jsx";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Order from './components/Order/Shop.jsx';
@@ -24,7 +25,7 @@ function App() {
 
   return (
     <Router>
-      
+       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Price />} />
          <Route path="/order" element={<Order />} />
